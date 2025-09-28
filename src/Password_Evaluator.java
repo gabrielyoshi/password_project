@@ -7,7 +7,7 @@ public class FileToArray {
 	
 	List<String> commonList = new ArrayList<>();
 	
-	try (BufferedReader br = new BufferedReader(new File))
+	try (BufferedReader br = new BufferedReader(new File));
 }
 
 public class Password_Evaluator {
