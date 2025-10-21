@@ -39,6 +39,7 @@ public class PasswordEvaluatorDriver {
 		
 		// Password strength
 		
+		// Calculates entropy and bruteforce time
 		Double entropy = strengthPrompts.strengthMeterString(userPassword);
 		
 		scan.close();

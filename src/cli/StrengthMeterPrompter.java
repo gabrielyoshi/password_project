@@ -33,7 +33,8 @@ public class StrengthMeterPrompter {
 		out.println(userPassword + " is " + result + " with an entropy value of " 
 		+ entropy + ".");
 		double seconds = StrengthMeter.bruteForceTime(entropy);
-		out.println("A computer could brute-force this password in " + seconds 
+		out.println("A computer that can process " + meter.getAttemptsPerSecond() 
+				+ " guesses per second can brute-force this password in " + seconds 
 				+ " seconds.");
 		
 		return entropy;
