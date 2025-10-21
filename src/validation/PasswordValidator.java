@@ -14,6 +14,17 @@ public class PasswordValidator {
 	private static final String AT_LEAST_ONE_DIGIT = "(?=.*\\d)";
 	private static final String AT_LEAST_ONE_SPECIAL = "(?=.*[^A-Za-z\\d])";
 	
+	// Combine regex rules and description into 2-string array (4x2 structure)
+	// in a "rules" list. rules[0] is regex string, rules[1] is description
+			
+	public static final List<String[]> RULES = List.of(
+			new String[] {AT_LEAST_ONE_UPPERCASE, "an uppercase letter"},
+			new String[] {AT_LEAST_ONE_LOWERCASE, "a lowercase letter"},
+			new String[] {AT_LEAST_ONE_DIGIT, "a digit"},
+			new String[] {AT_LEAST_ONE_SPECIAL, "a special character"}
+	);
+		
+	
 	/**
 	 * Checks if password fulfills the following:
 	 * - At least one uppercase letter
@@ -27,19 +38,10 @@ public class PasswordValidator {
 	public static String complexityMessage(String password) {
 		if (password == null) return "Password is null.";
 		
-		// Combine regex rules and description into 2-string array (4x2 structure)
-		// in a "rules" list. rules[0] is regex string, rules[1] is description
-		List<String[]> rules = List.of(
-			new String[] {AT_LEAST_ONE_UPPERCASE, "an uppercase letter"},
-			new String[] {AT_LEAST_ONE_LOWERCASE, "a lowercase letter"},
-			new String[] {AT_LEAST_ONE_DIGIT, "a digit"},
-			new String[] {AT_LEAST_ONE_SPECIAL, "a special character"}
-		);
-		
 		// stores description single elements that fail test
 		List<String> missing = new ArrayList<>();
 		
-		for (String[] rule : rules) {
+		for (String[] rule : RULES) {
 			// compiles new regex pattern object
 			// TODO: relatively expensive. Should be compiled once and reused
 			Pattern pattern = Pattern.compile("^" + rule[0] + ".*$");
