@@ -3,6 +3,7 @@ package test;
 import validation.PasswordValidator;
 import username.UsernameGenerator;
 import java.util.Random;
+import entropy.StrengthMeter;
 
 public class PasswordEvaluatorTestDriver {
 	public static void main(String[] args) {
@@ -11,6 +12,7 @@ public class PasswordEvaluatorTestDriver {
 		testPasswordLength();
 		testUsernameGenerator();
 		testComplexPassword();
+		testStrengthMeter();
 	}
 	
 	private static void testPasswordLength() {
@@ -51,5 +53,15 @@ public class PasswordEvaluatorTestDriver {
 				"Expected valid password, but got: " + noUpperNoSpecial;
 		
 		System.out.println("testComplexPassword passed");
+	}
+	
+	private static void testStrengthMeter() {
+		StrengthMeter test = new StrengthMeter();
+		double logBase2 = test.logBase2(94);
+		assert logBase2 == 6.554588851677638;
+		
+		double entropy = test.entropy(12);
+		assert entropy == 78.65506622013166;
+		System.out.println("testStrengthMeter passed");
 	}
 }
