@@ -8,17 +8,21 @@ public class PasswordPrompter {
 	private final Scanner in; //encapsulates I/O streams
 	private final PrintStream out;
 	private final StrengthMeter meter;
+	// creates object to call strengthMeterString
+	private final StrengthMeterPrompter strengthPrompter; 
 	
 	public PasswordPrompter(Scanner in, PrintStream out, StrengthMeter meter) {
 		this.in = in; // immutable variables for safety
 		this.out = out;
 		this.meter = meter;
+		this.strengthPrompter = new StrengthMeterPrompter(in, out, meter);
 	}
 	
 	public String promptValidPassword() {
 		// Extends password evaluation to check character length
 		String userPassword;
 		out.println("Current password rules:");
+		// Prints current password rules
 		int counter = 1;
 			for (String[] rule: PasswordValidator.RULES) {
 				out.println("Rule " + counter + ": " + rule[1]);
@@ -35,6 +39,8 @@ public class PasswordPrompter {
 				//TODO: Build a method that determines possibilities in a StrengthMeter class
 				out.println("\"" + userPassword + "\" [THEORETICAL] entropy value is " 
 						+ meter.entropy(userPassword.length()));
+				// call to strengthMeterString
+				strengthPrompter.strengthMeterString(userPassword);
 				continue; //skips next iteration if isValidLength() fails
 			}
 			String complexityMessage = PasswordValidator.complexityMessage(userPassword);
@@ -44,6 +50,8 @@ public class PasswordPrompter {
 				//TODO: Build a method that determines possibilities in a StrengthMeter class
 				out.println("\"" + userPassword + "\" [THEORETICAL] entropy value is " 
 						+ meter.entropy(userPassword.length()));
+				// call to strengthMeterString
+				strengthPrompter.strengthMeterString(userPassword);
 			}
 		} while (!PasswordValidator.isValidLength(userPassword) 
 				|| !PasswordValidator.isComplex(userPassword));
