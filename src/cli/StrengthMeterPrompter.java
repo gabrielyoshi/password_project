@@ -34,8 +34,9 @@ public class StrengthMeterPrompter {
 		+ entropy + ".");
 		double seconds = StrengthMeter.bruteForceTime(entropy);
 		out.println("A computer that can process " + meter.getAttemptsPerSecond() 
-				+ " guesses per second can brute-force this password in " + seconds 
-				+ " seconds.");
+				+ " guesses per second can brute-force this password in " + seconds);
+				
+				//StrengthMeter.secondsToDaysMonthsYears(seconds));
 		
 		return entropy;
 	}

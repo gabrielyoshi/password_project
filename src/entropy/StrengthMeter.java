@@ -41,6 +41,18 @@ public class StrengthMeter {
 		return averageTime;
 	}
 	
+	/*public static String secondsToDaysMonthsYears(double seconds) {
+		String s = "";
+		int second, minutes, days, months, years;
+		
+		if (second > 60) {
+			minutes = (int)seconds / 60;
+			second = seconds % 60;
+			s = minutes + " minutes " + seconds + " seconds.";
+		}
+		return s;
+	}*/
+	
 	public int getAttemptsPerSecond() {
 		return attemptsPerSecond;
 	}
