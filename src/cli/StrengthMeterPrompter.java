@@ -17,7 +17,7 @@ public class StrengthMeterPrompter {
 	}
 	
 	public double strengthMeterString(String userPassword) {
-		double entropy = meter.entropy(userPassword.length());
+		double entropy = meter.entropy(userPassword);
 		String result = "not evalauted";
 		
 		if (entropy < 40) {
@@ -32,12 +32,7 @@ public class StrengthMeterPrompter {
 		
 		out.println(userPassword + " is " + result + " with an entropy value of " 
 		+ entropy + ".");
-		double seconds = StrengthMeter.bruteForceTime(entropy);
-		out.println("A computer that can process " + meter.getAttemptsPerSecond() 
-				+ " guesses per second can brute-force this password in " + seconds);
-				
-				//StrengthMeter.secondsToDaysMonthsYears(seconds));
-		
+		out.println(meter.toString());
 		return entropy;
 	}
 }

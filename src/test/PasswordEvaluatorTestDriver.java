@@ -60,8 +60,8 @@ public class PasswordEvaluatorTestDriver {
 		double logBase2 = test.logBase2(94);
 		assert logBase2 == 6.554588851677638;
 		
-		double entropy = test.entropy(12);
-		assert entropy == 78.65506622013166;
+		double entropy = test.entropy("GG");
+		assert entropy == 9.400879436282185;
 		System.out.println("testStrengthMeter passed");
 	}
 }

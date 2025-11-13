@@ -30,6 +30,7 @@ public class PasswordPrompter {
 			}
 		do {
 			// -- (Driver) password prompt
+			System.out.println();
 			out.print("Please enter your password: ");
 			userPassword = in.nextLine();
 			if(!PasswordValidator.isValidLength(userPassword)) {
@@ -38,7 +39,7 @@ public class PasswordPrompter {
 				//TODO: "94" is hardcoded for possibilities parameter of entropy()
 				//TODO: Build a method that determines possibilities in a StrengthMeter class
 				out.println("\"" + userPassword + "\" [THEORETICAL] entropy value is " 
-						+ meter.entropy(userPassword.length()));
+						+ meter.entropy(userPassword));
 				// call to strengthMeterString
 				strengthPrompter.strengthMeterString(userPassword);
 				continue; //skips next iteration if isValidLength() fails
@@ -49,7 +50,7 @@ public class PasswordPrompter {
 				//TODO: "94" is hardcoded for possibilities parameter of entropy()
 				//TODO: Build a method that determines possibilities in a StrengthMeter class
 				out.println("\"" + userPassword + "\" [THEORETICAL] entropy value is " 
-						+ meter.entropy(userPassword.length()));
+						+ meter.entropy(userPassword));
 				// call to strengthMeterString
 				strengthPrompter.strengthMeterString(userPassword);
 			}
